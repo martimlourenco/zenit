@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zenit - The future of sports event management</title>
+  <link rel="icon" type="image/png" href="imagens/z.png">
+  <link rel="apple-touch-icon" href="imagens/z.png">
+  <!-- EmailJS for form submission -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f4ff',
+              100: '#e0e9ff',
+              200: '#c7d6fe',
+              300: '#a5b8fc',
+              400: '#818cf8',
+              500: '#5E6AD2',
+              600: '#4c5bc0',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            },
+            secondary: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              200: '#a5f3fc',
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#00D2FF',
+              600: '#0891b2',
+              700: '#0e7490',
+              800: '#155e75',
+              900: '#164e63',
+            },
+            gray: {
+              50: '#fafafa',
+              100: '#f4f4f5',
+              200: '#e4e4e7',
+              300: '#d4d4d8',
+              400: '#a1a1aa',
+              500: '#71717a',
+              600: '#52525b',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b',
+              950: '#09090b'
+            }
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+          },
+          backdropBlur: {
+            'xs': '2px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #09090b;
+      color: #fafafa;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-8px) scale(1.02); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #18181b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3f3f46;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #52525b;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-950 text-gray-50 antialiased">
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/50 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <img src="imagens/logo.png" alt="Zenit Logo" class="h-8 w-auto drop-shadow-md hover:scale-105 transition-transform duration-300">
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-gray-300 hover:text-primary-400 font-medium text-sm transition-colors duration-200 relative group">
+            Home
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#features" class="text-gray-300 hover:text-primary-400 font-medium text-sm transition-colors duration-200 relative group">
+            Features
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#download" class="text-gray-300 hover:text-primary-400 font-medium text-sm transition-colors duration-200 relative group">
+            Beta access
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#contact" class="text-gray-300 hover:text-primary-400 font-medium text-sm transition-colors duration-200 relative group">
+            Contact
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+        </div>
+
+        <div class="md:hidden">
+          <button id="hamburger" class="hamburger flex flex-col gap-1 p-2 rounded-lg bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:bg-gray-800/70 transition-all duration-200">
+            <span class="bar w-5 h-0.5 bg-gray-300 rounded-full transition-all duration-300"></span>
+            <span class="bar w-5 h-0.5 bg-gray-300 rounded-full transition-all duration-300"></span>
+            <span class="bar w-5 h-0.5 bg-gray-300 rounded-full transition-all duration-300"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="nav-menu" class="md:hidden fixed left-0 top-16 w-full bg-gray-950/95 backdrop-blur-xl border-b border-gray-800/50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="px-6 py-8 space-y-6">
+          <a href="#home" class="block text-gray-300 hover:text-primary-400 font-medium text-lg transition-colors duration-200">Home</a>
+          <a href="#features" class="block text-gray-300 hover:text-primary-400 font-medium text-lg transition-colors duration-200">Features</a>
+          <a href="#download" class="block text-gray-300 hover:text-primary-400 font-medium text-lg transition-colors duration-200">Beta access</a>
+          <a href="#contact" class="block text-gray-300 hover:text-primary-400 font-medium text-lg transition-colors duration-200">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 relative overflow-hidden pt-16">
+    <!-- Linear-style grid background -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+    
+    <!-- Gradient orbs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <div class="mb-12">
+        <img src="imagens/logo.png" alt="Zenit" class="h-16 lg:h-20 w-auto mx-auto animate-float drop-shadow-2xl">
+      </div>
+      
+      <h1 class="text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-50 via-gray-200 to-primary-400 mb-8 leading-tight tracking-tight">
+        The future of sports event management
+      </h1>
+      
+      <p class="text-xl lg:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+        Connect, compete, and celebrate sports events with gamification, rankings, and seamless organization. 
+        Built for the modern athlete.
+      </p>
+      
+      <div class="flex flex-col items-center gap-8">
+        <a href="#download" class="group relative inline-flex items-center justify-center px-12 lg:px-16 py-4 lg:py-6 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold text-lg rounded-2xl shadow-2xl hover:shadow-primary-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="relative z-10 flex items-center gap-3">
+            Join the beta
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </span>
+        </a>
+        
+        <div class="flex items-center gap-3 text-gray-500 font-medium">
+          <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <span>Coming soon to all platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="py-24 lg:py-32 bg-gray-950 relative border-t border-gray-800/50">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-20">
+        <h2 class="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-50 to-gray-400 mb-6 tracking-tight">
+          Built for sports communities
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
+          Everything you need to organize, participate, and excel in sports events
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Event Management -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 hover:scale-105 transition-all duration-500 cursor-pointer relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                <path d="M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">Event management</h3>
+            <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">Create and organize sports events with smart scheduling, venue booking, and automated notifications.</p>
+          </div>
+        </div>
+
+        <!-- Gamification -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 hover:scale-105 transition-all duration-500 cursor-pointer relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.27L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">Gamification</h3>
+            <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">Earn points, climb leaderboards, unlock achievements, and participate in seasonal challenges.</p>
+          </div>
+        </div>
+
+        <!-- Community -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 hover:scale-105 transition-all duration-500 cursor-pointer relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">Community</h3>
+            <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">Connect with athletes, join events, and build your sports network with smart matching.</p>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 hover:scale-105 transition-all duration-500 cursor-pointer relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                <path d="M9 11H15M9 15H15M17 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H12.5858C12.851 3 13.1054 3.10536 13.2929 3.29289L19.7071 9.70711C19.8946 9.89464 20 10.149 20 10.4142V19C20 20.1046 19.1046 21 18 21H17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">Analytics</h3>
+            <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">Track your performance, analyze spending, and get insights with beautiful visualizations.</p>
+          </div>
+        </div>
+
+        <!-- Smart Management -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 hover:scale-105 transition-all duration-500 cursor-pointer relative overflow-hidden md:col-span-2 lg:col-span-1">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19.4 15C19.2669 15.3016 19.2272 15.6362 19.286 15.9606C19.3448 16.285 19.4995 16.5843 19.73 16.82L19.79 16.88C19.976 17.0657 20.1235 17.2863 20.2241 17.5291C20.3248 17.7719 20.3766 18.0322 20.3766 18.295C20.3766 18.5578 20.3248 18.8181 20.2241 19.0609C20.1235 19.3037 19.976 19.5243 19.79 19.71C19.6043 19.896 19.3837 20.0435 19.1409 20.1441C18.8981 20.2448 18.6378 20.2966 18.375 20.2966C18.1122 20.2966 17.8519 20.2448 17.6091 20.1441C17.3663 20.0435 17.1457 19.896 16.96 19.71L16.9 19.65C16.6643 19.4195 16.365 19.2648 16.0406 19.206C15.7162 19.1472 15.3816 19.1869 15.08 19.32C14.7842 19.4468 14.532 19.6572 14.3543 19.9255C14.1766 20.1938 14.0813 20.5082 14.08 20.83V21C14.08 21.5304 13.8693 22.0391 13.4942 22.4142C13.1191 22.7893 12.6104 23 12.08 23C11.5496 23 11.0409 22.7893 10.6658 22.4142C10.2907 22.0391 10.08 21.5304 10.08 21V20.91C10.0723 20.579 9.96512 20.258 9.77251 19.9887C9.5799 19.7194 9.31074 19.5143 9 19.4C8.69838 19.2669 8.36381 19.2272 8.03941 19.286C7.71502 19.3448 7.41568 19.4995 7.18 19.73L7.12 19.79C6.93425 19.976 6.71368 20.1235 6.47088 20.2241C6.22808 20.3248 5.96783 20.3766 5.705 20.3766C5.44217 20.3766 5.18192 20.3248 4.93912 20.2241C4.69632 20.1235 4.47575 19.976 4.29 19.79C4.10405 19.6043 3.95653 19.3837 3.85588 19.1409C3.75523 18.8981 3.70343 18.6378 3.70343 18.375C3.70343 18.1122 3.75523 17.8519 3.85588 17.6091C3.95653 17.3663 4.10405 17.1457 4.29 16.96L4.35 16.9C4.58054 16.6643 4.73519 16.365 4.794 16.0406C4.85282 15.7162 4.81312 15.3816 4.68 15.08C4.55324 14.7842 4.34276 14.532 4.07447 14.3543C3.80618 14.1766 3.49179 14.0813 3.17 14.08H3C2.46957 14.08 1.96086 13.8693 1.58579 13.4942C1.21071 13.1191 1 12.6104 1 12.08C1 11.5496 1.21071 11.0409 1.58579 10.6658C1.96086 10.2907 2.46957 10.08 3 10.08H3.09C3.42099 10.0723 3.742 9.96512 4.0113 9.77251C4.28059 9.5799 4.48572 9.31074 4.6 9C4.73312 8.69838 4.77282 8.36381 4.714 8.03941C4.65519 7.71502 4.50054 7.41568 4.27 7.18L4.21 7.12C4.02405 6.93425 3.87653 6.71368 3.77588 6.47088C3.67523 6.22808 3.62343 5.96783 3.62343 5.705C3.62343 5.44217 3.67523 5.18192 3.77588 4.93912C3.87653 4.69632 4.02405 4.47575 4.21 4.29C4.39575 4.10405 4.61632 3.95653 4.85912 3.85588C5.10192 3.75523 5.36217 3.70343 5.625 3.70343C5.88783 3.70343 6.14808 3.75523 6.39088 3.85588C6.63368 3.95653 6.85425 4.10405 7.04 4.29L7.1 4.35C7.33568 4.58054 7.63502 4.73519 7.95941 4.794C8.28381 4.85282 8.61838 4.81312 8.92 4.68H9C9.29577 4.55324 9.54802 4.34276 9.72569 4.07447C9.90337 3.80618 9.99872 3.49179 10 3.17V3C10 2.46957 10.2107 1.96086 10.5858 1.58579C10.9609 1.21071 11.4696 1 12 1C12.5304 1 13.0391 1.21071 13.4142 1.58579C13.7893 1.96086 14 2.46957 14 3V3.09C14.0013 3.41179 14.0966 3.72618 14.2743 3.99447C14.452 4.26276 14.7042 4.47324 15 4.6C15.3016 4.73312 15.6362 4.77282 15.9606 4.714C16.285 4.65519 16.5843 4.50054 16.82 4.27L16.88 4.21C17.0657 4.02405 17.2863 3.87653 17.5291 3.77588C17.7719 3.67523 18.0322 3.62343 18.295 3.62343C18.5578 3.62343 18.8181 3.67523 19.0609 3.77588C19.3037 3.87653 19.5243 4.02405 19.71 4.21C19.896 4.39575 20.0435 4.61632 20.1441 4.85912C20.2448 5.10192 20.2966 5.36217 20.2966 5.625C20.2966 5.88783 20.2448 6.14808 20.1441 6.39088C20.0435 6.63368 19.896 6.85425 19.71 7.04L19.65 7.1C19.4195 7.33568 19.2648 7.63502 19.206 7.95941C19.1472 8.28381 19.1869 8.61838 19.32 8.92V9C19.4468 9.29577 19.6572 9.54802 19.9255 9.72569C20.1938 9.90337 20.5082 9.99872 20.83 10H21C21.5304 10 22.0391 10.2107 22.4142 10.5858C22.7893 10.9609 23 11.4696 23 12C23 12.5304 22.7893 13.0391 22.4142 13.4142C22.0391 13.7893 21.5304 14 21 14H20.91C20.5882 14.0013 20.2738 14.0966 20.0055 14.2743C19.7372 14.452 19.5268 14.7042 19.4 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">Smart management</h3>
+            <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">Automated moderation, intelligent matching, and seamless authentication across all platforms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD SECTION -->
+  <section id="download" class="py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 relative overflow-hidden border-t border-gray-800/50">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+    
+    <!-- Floating orbs -->
+    <div class="absolute top-0 left-0 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-secondary-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-20">
+        <h2 class="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-50 to-gray-400 mb-6 tracking-tight">
+          Join the beta
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
+          Be among the first to experience the future of sports event management
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20">
+        <!-- iOS App -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 text-center hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-20 h-20 bg-gradient-to-r from-gray-700 to-gray-600 rounded-3xl flex items-center justify-center mb-8 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-300">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">iOS App</h3>
+            <p class="text-gray-400 leading-relaxed mb-8 group-hover:text-gray-300 transition-colors duration-300">Native iOS experience with full integration to Apple Health and Apple Pay</p>
+            <button disabled class="w-full px-6 py-4 bg-gray-800/50 border border-gray-700/50 text-gray-500 font-medium rounded-2xl cursor-not-allowed backdrop-blur-sm">
+              Coming soon
+            </button>
+          </div>
+        </div>
+
+        <!-- Android App -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 text-center hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-20 h-20 bg-gradient-to-r from-gray-700 to-gray-600 rounded-3xl flex items-center justify-center mb-8 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-300">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">Android App</h3>
+            <p class="text-gray-400 leading-relaxed mb-8 group-hover:text-gray-300 transition-colors duration-300">Optimized Android experience with Google Pay integration and Material Design</p>
+            <button disabled class="w-full px-6 py-4 bg-gray-800/50 border border-gray-700/50 text-gray-500 font-medium rounded-2xl cursor-not-allowed backdrop-blur-sm">
+              Coming soon
+            </button>
+          </div>
+        </div>
+
+        <!-- Web Platform -->
+        <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 text-center hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-20 h-20 bg-gradient-to-r from-gray-700 to-gray-600 rounded-3xl flex items-center justify-center mb-8 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-300">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-50 mb-4 group-hover:text-primary-400 transition-colors duration-300">Web Platform</h3>
+            <p class="text-gray-400 leading-relaxed mb-8 group-hover:text-gray-300 transition-colors duration-300">Access all features directly from your browser on any device</p>
+            <button disabled class="w-full px-6 py-4 bg-gray-800/50 border border-gray-700/50 text-gray-500 font-medium rounded-2xl cursor-not-allowed backdrop-blur-sm">
+              Coming soon
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beta signup -->
+      <div class="text-center bg-gray-900/60 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-12 lg:p-16 max-w-3xl mx-auto shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-50"></div>
+        <div class="relative z-10">
+          <p class="text-xl text-gray-300 mb-8 font-light">
+            <span class="font-bold text-gray-50">Want early access?</span> Join our beta program and help shape the future of Zenit.
+          </p>
+          <button class="group relative inline-flex items-center justify-center px-12 py-5 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold text-lg rounded-2xl shadow-2xl hover:shadow-primary-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span class="relative z-10 flex items-center gap-3">
+              Request beta access
+              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-24 lg:py-32 bg-gray-950 relative border-t border-gray-800/50">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-20">
+        <h2 class="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-50 to-gray-400 mb-6 tracking-tight">
+          Get in touch
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
+          Have questions? We'd love to hear from you
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <!-- Email -->
+          <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative z-10 flex items-start gap-6">
+              <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                  <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-50 mb-2 group-hover:text-primary-400 transition-colors duration-300">Email</h3>
+                <p class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors duration-300">zenitsporshelp@gmail.com</p>
+                <button onclick="copyEmail('zenitsporshelp@gmail.com')" class="px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-primary-500/50 text-gray-300 hover:text-primary-400 font-medium rounded-xl transition-all duration-300 text-sm backdrop-blur-sm">
+                  Copy email
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Support -->
+          <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative z-10 flex items-start gap-6">
+              <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                  <path d="M21 16.92V19.92C21.0011 20.1985 20.9441 20.4742 20.8325 20.7293C20.7209 20.9845 20.5573 21.2136 20.3521 21.4019C20.1468 21.5901 19.9046 21.7335 19.6407 21.8227C19.3769 21.9119 19.0973 21.9451 18.82 21.92C15.7428 21.5856 12.787 20.5341 10.19 18.85C7.77382 17.3147 5.72533 15.2662 4.18999 12.85C2.49997 10.2412 1.44824 7.271 1.11999 4.18C1.095 3.90347 1.12787 3.62476 1.21649 3.36162C1.30512 3.09849 1.44756 2.85669 1.63476 2.65162C1.82196 2.44655 2.0498 2.28271 2.30379 2.17052C2.55777 2.05833 2.83233 2.00026 3.10999 2H6.10999C6.5953 1.99522 7.06579 2.16708 7.43376 2.48353C7.80174 2.79999 8.04207 3.23945 8.10999 3.72C8.23662 4.68007 8.47144 5.62273 8.80999 6.53C8.94454 6.88792 8.97366 7.27691 8.8939 7.65088C8.81415 8.02485 8.62886 8.36811 8.35999 8.64L7.08999 9.91C8.51355 12.4135 10.5865 14.4864 13.09 15.91L14.36 14.64C14.6319 14.3711 14.9751 14.1858 15.3491 14.1061C15.7231 14.0263 16.1121 14.0555 16.47 14.19C17.3773 14.5286 18.3199 14.7634 19.28 14.89C19.7658 14.9585 20.2094 15.2032 20.5265 15.5775C20.8437 15.9518 21.0122 16.4296 21 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-50 mb-2 group-hover:text-primary-400 transition-colors duration-300">Support</h3>
+                <p class="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">24h response time</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 hover:bg-gray-900/70 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative z-10 flex items-start gap-6">
+              <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                  <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-50 mb-2 group-hover:text-primary-400 transition-colors duration-300">Location</h3>
+                <p class="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Portugal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-50"></div>
+          <form id="contact-form" class="space-y-6 relative z-10">
+            <div>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                placeholder="Your name" 
+                required
+                class="w-full px-6 py-4 bg-gray-800/50 border border-gray-700/50 rounded-2xl text-gray-50 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+              >
+            </div>
+            <div>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Your email" 
+                required
+                class="w-full px-6 py-4 bg-gray-800/50 border border-gray-700/50 rounded-2xl text-gray-50 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+              >
+            </div>
+            <div>
+              <textarea 
+                id="message" 
+                name="message" 
+                placeholder="Your message" 
+                rows="5" 
+                required
+                class="w-full px-6 py-4 bg-gray-800/50 border border-gray-700/50 rounded-2xl text-gray-50 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 resize-none backdrop-blur-sm"
+              ></textarea>
+            </div>
+            <button 
+              type="submit" 
+              class="w-full group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold text-lg rounded-2xl shadow-2xl hover:shadow-primary-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span class="relative z-10 flex items-center gap-3">
+                Send message
+                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-950 text-gray-300 py-16 relative overflow-hidden border-t border-gray-800/50">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+    
+    <!-- Background decorations -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-secondary-500/5 to-primary-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex items-center gap-4">
+          <img src="imagens/logo.png" alt="ZENIT LOGO" class="h-8 w-auto">
+          <div class="text-left">
+            <p class="text-sm text-gray-400 uppercase tracking-wider font-medium">© 2025 ZENIT. ALL RIGHTS RESERVED.</p>
+            <p class="text-sm text-gray-500 mt-1 font-light">SIMPLIFIED SPORTS EVENT MANAGEMENT</p>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-6">
+          <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
+          <span class="text-sm text-gray-400 font-medium">System operational</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

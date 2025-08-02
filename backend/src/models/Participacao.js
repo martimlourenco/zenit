@@ -40,13 +40,15 @@ const Participacao = sequelize.define('Participacao', {
 Participacao.associate = models => {
   Participacao.belongsTo(models.Evento, {
     foreignKey: 'evento_id',
-    as: 'evento'
+    as: 'evento',
+    onDelete: 'CASCADE'
   });
 
   Participacao.belongsTo(models.User, {
     foreignKey: 'user_id',
     as: 'utilizador',
-    allowNull: true
+    allowNull: true,
+    onDelete: 'SET NULL'
   });
 };
 

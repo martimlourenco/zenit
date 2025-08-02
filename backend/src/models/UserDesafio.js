@@ -30,8 +30,16 @@ const UserDesafio = sequelize.define('UserDesafio', {
 });
 
 UserDesafio.associate = models => {
-  UserDesafio.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
-  UserDesafio.belongsTo(models.Desafio, { foreignKey: 'desafio_id', as: 'desafio' });
+  UserDesafio.belongsTo(models.User, { 
+    foreignKey: 'user_id', 
+    as: 'user',
+    onDelete: 'CASCADE'
+  });
+  UserDesafio.belongsTo(models.Desafio, { 
+    foreignKey: 'desafio_id', 
+    as: 'desafio',
+    onDelete: 'CASCADE'
+  });
 };
 
 module.exports = UserDesafio;

@@ -16,8 +16,16 @@ const Report = sequelize.define('Report', {
     allowNull: false
   },
   tipo: {
-    type: DataTypes.ENUM('faltou', 'atrasado', 'mentiu_evento'),
+    type: DataTypes.ENUM('nao_comparencia', 'atraso', 'ma_conduta'),
     allowNull: false
+  },
+  evento_id: {
+    type: DataTypes.UUID,
+    allowNull: false
+  },
+  descricao: {
+    type: DataTypes.TEXT,
+    allowNull: true
   },
   data_report: {
     type: DataTypes.DATE,
@@ -33,12 +41,20 @@ const Report = sequelize.define('Report', {
 Report.associate = models => {
   Report.belongsTo(models.User, {
     foreignKey: 'reportador_id',
-    as: 'reportador'
+    as: 'reportador',
+    onDelete: 'SET NULL'
   });
 
   Report.belongsTo(models.User, {
     foreignKey: 'reportado_id',
-    as: 'reportado'
+    as: 'reportado',
+    onDelete: 'SET NULL'
+  });
+
+  Report.belongsTo(models.Evento, {
+    foreignKey: 'evento_id',
+    as: 'evento',
+    onDelete: 'CASCADE'
   });
 
   Report.hasMany(models.Penalizacao, {

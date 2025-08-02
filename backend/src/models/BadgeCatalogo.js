@@ -19,6 +19,16 @@ const BadgesCatalogo = sequelize.define('BadgesCatalogo', {
     type: DataTypes.ENUM('positiva', 'negativa'),
     allowNull: false
   },
+  criterio: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+    comment: 'Condições para obter a badge (ex: "10_eventos_organizados")'
+  },
+  temporaria: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    comment: 'Se a badge é temporária (temporada/evento especial)'
+  },
   foto_url: {
     type: DataTypes.TEXT,
     allowNull: true

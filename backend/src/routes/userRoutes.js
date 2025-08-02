@@ -1,13 +1,22 @@
 const express = require('express');
-const { changePassword } = require('../controllers/userController');
-const { getUserDetails } = require("../controllers/userController");
-const { searchUser } = require("../controllers/userController");
+const { changePassword, getUserDetails, searchUser, getUserStats, getMyProfile } = require('../controllers/userController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// ✅ Rota protegida para mudar a senha
+// Perfil do utilizador autenticado
+router.get('/profile', authMiddleware, getMyProfile);
+
+// Mudança de password
 router.put('/change-password', authMiddleware, changePassword);
-router.get("/profile/:userId", getUserDetails);
-router.get("/search", searchUser);
+
+// Perfil público de utilizador
+router.get('/profile/:userId', getUserDetails);
+
+// Pesquisa de utilizadores
+router.get('/search', searchUser);
+
+// Estatísticas do utilizador
+router.get('/stats/:userId', getUserStats);
+
 module.exports = router;

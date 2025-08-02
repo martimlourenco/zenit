@@ -25,8 +25,16 @@ const HistoricoRecompensa = sequelize.define('HistoricoRecompensa', {
 });
 
 HistoricoRecompensa.associate = models => {
-  HistoricoRecompensa.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
-  HistoricoRecompensa.belongsTo(models.Recompensa, { foreignKey: 'recompensa_id', as: 'recompensa' });
+  HistoricoRecompensa.belongsTo(models.User, { 
+    foreignKey: 'user_id', 
+    as: 'user',
+    onDelete: 'CASCADE'
+  });
+  HistoricoRecompensa.belongsTo(models.Recompensa, { 
+    foreignKey: 'recompensa_id', 
+    as: 'recompensa',
+    onDelete: 'CASCADE'
+  });
 };
 
 module.exports = HistoricoRecompensa;

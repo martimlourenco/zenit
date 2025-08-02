@@ -1,41 +1,37 @@
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/.env' });
 const express = require('express');
 const sequelize = require('./src/config/database');
-const User = require('./src/models/User');
-const Movie = require('./src/models/Movie');
-const Genre = require('./src/models/Genre'); // 🔥 Importa o modelo de Gênero
-const Favorite = require('./src/models/Favorite');
+
+// Import all models with associations
+const models = require('./src/models');
+
+// Routes
 const authRoutes = require('./src/routes/authRoutes');
-const movieRoutes = require('./src/routes/movieRoutes');
-const favoriteRoutes = require('./src/routes/favoriteRoutes');
-const likeDislikeRoutes = require('./src/routes/likeDislikeRoutes');
 const userRoutes = require('./src/routes/userRoutes');
 const passwordRoutes = require('./src/routes/passwordRoutes');
-const recommendationRoutes = require('./src/routes/recommendationRoutes'); // 🔥 Nova rota de Recomendações
-const { populateMovies } = require('./src/controllers/movieController');
-const fetchGenres = require('./src/scripts/fetchGenres');
+const eventRoutes = require('./src/routes/eventRoutes');
+const reportRoutes = require('./src/routes/reportRoutes');
+const gamificationRoutes = require('./src/routes/gamificationRoutes');
+const modalidadeRoutes = require('./src/routes/modalidadeRoutes');
+const localidadeRoutes = require('./src/routes/localidadeRoutes');
 
 const app = express();
 app.use(express.json());
 
-// Registrando as rotas
+// Registrar routes
 app.use('/auth', authRoutes);
-app.use('/movies', movieRoutes);
-app.use('/favorites', favoriteRoutes);
-app.use('/likes', likeDislikeRoutes);
 app.use('/users', userRoutes);
 app.use('/password', passwordRoutes);
-app.use('/recommendations', recommendationRoutes); // Registrando as rotas de recomendação
-// Sincronizar banco de dados e popular automaticamente
+app.use('/events', eventRoutes);
+app.use('/reports', reportRoutes);
+app.use('/gamification', gamificationRoutes);
+app.use('/modalidades', modalidadeRoutes);
+app.use('/localidades', localidadeRoutes);
+
+// Sincronizar base de dados
 sequelize.sync({ force: false }) 
     .then(async () => {
         console.log('📀 Base de dados sincronizada!');
-        
-        // 🔥 Buscar e salvar os gêneros antes de popular os filmes
-        await fetchGenres(); 
-
-        // 🔹 Chama a função de popular filmes automaticamente
-        await populateMovies(); 
     })
     .catch(err => console.error('❌ Erro ao sincronizar base:', err));
 

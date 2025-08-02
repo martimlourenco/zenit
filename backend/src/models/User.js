@@ -17,7 +17,15 @@ const User = sequelize.define('User', {
     allowNull: false,
     unique: true
   },
-  rank: {
+  password: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  nome: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  pontos: {
     type: DataTypes.INTEGER,
     defaultValue: 0
   },
@@ -38,12 +46,14 @@ const User = sequelize.define('User', {
 User.associate = models => {
   User.belongsTo(models.Modalidade, {
     foreignKey: 'desporto_favorito',
-    as: 'modalidade'
+    as: 'modalidade',
+    onDelete: 'SET NULL'
   });
 
   User.belongsTo(models.Localidade, {
     foreignKey: 'localidade',
-    as: 'localidade_origem'
+    as: 'localidade_origem',
+    onDelete: 'SET NULL'
   });
 
   User.hasMany(models.Evento, {

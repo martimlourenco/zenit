@@ -39,9 +39,10 @@ const Evento = sequelize.define('Evento', {
     type: DataTypes.ENUM('aberto', 'por convite'),
     allowNull: false
   },
-  rank_minimo: {
+  pontos_minimos: {
     type: DataTypes.INTEGER,
-    allowNull: true
+    allowNull: true,
+    defaultValue: 0
   },
   status: {
     type: DataTypes.ENUM('pendente', 'confirmado', 'cancelado', 'concluido'),
@@ -60,22 +61,30 @@ const Evento = sequelize.define('Evento', {
 Evento.associate = models => {
   Evento.belongsTo(models.User, {
     foreignKey: 'organizador_id',
-    as: 'organizador'
+    as: 'organizador',
+    onDelete: 'SET NULL'
   });
 
   Evento.belongsTo(models.Modalidade, {
     foreignKey: 'modalidade',
-    as: 'modalidade'
+    as: 'modalidade_info',
+    onDelete: 'SET NULL'
   });
 
   Evento.belongsTo(models.Localidade, {
     foreignKey: 'localidade',
-    as: 'localidade_evento'
+    as: 'localidade_info',
+    onDelete: 'SET NULL'
   });
 
   Evento.hasMany(models.Participacao, {
     foreignKey: 'evento_id',
     as: 'participacoes'
+  });
+
+  Evento.hasMany(models.Report, {
+    foreignKey: 'evento_id',
+    as: 'reports'
   });
 };
 

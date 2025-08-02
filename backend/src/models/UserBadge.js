@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const BadgesCatalogo = require('./BadgesCatalogo');
+const BadgeCatalogo = require('./BadgeCatalogo');
 const User = require('./User');
 
 const UserBadge = sequelize.define('UserBadge', {
@@ -21,7 +21,7 @@ const UserBadge = sequelize.define('UserBadge', {
     type: DataTypes.UUID,
     allowNull: false,
     references: {
-      model: BadgesCatalogo,
+      model: BadgeCatalogo,
       key: 'id'
     }
   },
@@ -36,8 +36,16 @@ const UserBadge = sequelize.define('UserBadge', {
 
 // Relações
 UserBadge.associate = models => {
-  UserBadge.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
-  UserBadge.belongsTo(models.BadgesCatalogo, { foreignKey: 'badge_id', as: 'badge' });
+  UserBadge.belongsTo(models.User, { 
+    foreignKey: 'user_id', 
+    as: 'user',
+    onDelete: 'CASCADE'
+  });
+  UserBadge.belongsTo(models.BadgeCatalogo, { 
+    foreignKey: 'badge_id', 
+    as: 'badge',
+    onDelete: 'CASCADE'
+  });
 };
 
 module.exports = UserBadge;

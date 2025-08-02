@@ -37,8 +37,16 @@ const Penalizacao = sequelize.define('Penalizacao', {
 });
 
 Penalizacao.associate = models => {
-  Penalizacao.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
-  Penalizacao.belongsTo(models.Report, { foreignKey: 'report_id', as: 'report' });
+  Penalizacao.belongsTo(models.User, { 
+    foreignKey: 'user_id', 
+    as: 'user',
+    onDelete: 'CASCADE'
+  });
+  Penalizacao.belongsTo(models.Report, { 
+    foreignKey: 'report_id', 
+    as: 'report',
+    onDelete: 'SET NULL'
+  });
 };
 
 module.exports = Penalizacao;

@@ -1,123 +1,155 @@
-🏅 Zenit
 
-Zenit é uma aplicação multi-plataforma para gestão e participação em eventos desportivos, com funcionalidades sociais, sistema de gamificação e moderação, pensada para entusiastas do desporto que querem organizar, participar e competir de forma simples e envolvente.
-📱 Funcionalidades Principais
-1. Funcionalidades Gerais
+<p align="center"> <img src="https://github.com/user-attachments/assets/028618f8-5eb4-410a-922b-a269f0ff7fa3" alt="Zenit Logo" width="480" /> </p>
 
-    Autenticação de utilizadores (registo, login, recuperação de palavra-passe)
+Your gateway to organizing and competing in real-world sports events. Powered by gamification and social connection.
 
-    Login com Google e Apple ID
+| [Contact Us](https://martimlourenco.github.io/zenit/)
 
-    Edição de perfil (nome, fotografia, localidade, desporto favorito)
+🧠 What is Zenit?
 
-    Visualização de perfil (público e privado)
+Zenit is a cross-platform app that redefines how sports enthusiasts organize, join, and compete in real-world events. Through social features, gamification, and automated moderation, Zenit brings structure, competition, and community to local sports.
+<p align="center"> <img src="https://github.com/user-attachments/assets/e89c10cb-3176-4446-bc4a-0589ff2a2a2e" alt="Zenit Poster" width="500" /> </p>
 
-    Modo escuro/claro
+Whether you're hosting a casual 5-a-side game or a competitive padel tournament — Zenit has you covered.
 
-    Notificações push e por email
+✨ Key Features
 
-2. Gestão de Eventos
+✅ General
 
-    Criação e gestão de eventos desportivos (futebol, basquetebol, pádel, etc)
+    Full user authentication: sign-up, login, password reset
 
-    Campos detalhados: nome, modalidade, localização (mapa integrado), data, hora, número de participantes, prémios
+    Login with Google and Apple ID
 
-    Eventos abertos, por convite ou com reservas para externos
+    Profile editing (photo, location, favorite sport)
 
-    Cancelamento e edição com notificações automáticas
+    Dark/light theme support
 
-    Requisitos de rank para organização de eventos ou torneios
+    Push and email notifications
 
-    Criação de torneios para utilizadores experientes
+🏟️ Events
 
-3. Participação em Eventos
+    Create and manage sports events (football, basketball, padel, etc.)
 
-    Inscrição e desinscrição (com penalizações variáveis)
+    Event fields: name, location (map), sport, date/time, participants, price
 
-    Sistema de convites e aprovação pelo organizador
+    Event types: public, invite-only, external-only
 
-    Gestão da lista de participantes confirmados
+    Rank-based access to organize events
 
-    Filtros avançados para pesquisa de eventos
+    Tournament mode for advanced users
 
-4. Estatísticas e Perfil
+    Automatic notifications for changes/cancellations
 
-    Histórico detalhado de eventos organizados e participados
+🙋 Participation
 
-    Estatísticas financeiras e desportivas (total gasto, desporto mais praticado)
+    Join/leave events (penalties for late exit optional)
 
-    Estatísticas visuais sobre frequência e preferências
+    Approval workflow for organizers
 
-5. Gamificação
+    Invite registered or external participants
 
-    Sistema de Pontuação e Rank com progressão por ações e penalizações
+    Confirmation tracking
 
-    Leaderboards semanais e globais por desporto e localidade
+    Event filtering system
 
-    Sistema de Badges com conquistas permanentes e temporárias
+📊 Stats & Profile
 
-    Desafios Semanais automáticos com recompensas em pontos
+    Full history of events created/joined
 
-    Loja de Recompensas para troca de pontos por funcionalidades e personalização
+    Spending and participation analytics
 
-6. Sistema de Reports e Moderação
+    Visual dashboards and graphs
 
-    Reports por não comparência, atraso e má conduta
+🕹️ Gamification
 
-    Penalizações automáticas e sistema anti-abuso de reports
+    Rank progression system
 
-    Notificações à administração para casos suspeitos
+    Weekly and global leaderboards (by sport & region)
 
-7. Multi-Plataforma
+    Badge system (seasonal + permanent)
 
-    Aplicação desenvolvida em React Native + Expo
+    Weekly challenges with XP rewards
 
-    Suporte iOS, Android e Web
+    Reward store (features, cosmetics, etc.)
 
-    Interface responsiva adaptada a cada plataforma
+🛡️ Moderation
 
-    Partilha de eventos via URL para redes sociais e mensagens
+    Report system: no-show, lateness, misconduct
 
-⚙️ Tecnologias Utilizadas
+    Automatic penalties with anti-abuse checks
 
-    Frontend: React Native com Expo (monorepo para mobile e web)
+    Escalation process for edge cases
+⚙️ Tech Stack
 
-    Backend: Node.js com Express ou Firebase Functions
+| **Layer**         | **Technology**                             |
+| ----------------- | ------------------------------------------ |
+| **Frontend**      | React Native + Expo (Web & Mobile)         |
+| **Backend**       | Node.js with Express or Firebase Functions |
+| **Database**      | PostgreSQL or Firebase Firestore           |
+| **Auth**          | Firebase Auth / Auth0 (Google & Apple ID)  |
+| **Media**         | Firebase Storage / Amazon S3               |
+| **Notifications** | Firebase Cloud Messaging, SendGrid         |
 
-    Base de Dados: PostgreSQL ou Firebase Firestore
+🚀 Getting Started
 
-    Autenticação: Firebase Auth ou Auth0 (incluindo login Google e Apple ID)
-
-    Notificações: Firebase Cloud Messaging e Email (ex: SendGrid)
-
-    Armazenamento: Firebase Storage ou Amazon S3 (imagens, badges)
-
-🚀 Instruções de Instalação
-1. Instalar dependências
-
+1. Clone & install dependencies
+```
+git clone https://github.com/your-username/zenit.git
+cd zenit
 npm install
-
-⚠️ Nota: A pasta node_modules não está incluída no repositório por questões de espaço.
-2. Backend
-
+```
+2. Run backend
+```
 cd backend
 npm install
 npm start
-
-3. Frontend
-
+```
+3. Run frontend
+```
 cd frontend
 npm install
 npx expo start
+```
+🔐 Configuration
 
-4. Configurações adicionais
+You’ll need to set environment variables for:
 
-    Configurar variáveis de ambiente para Firebase/Auth0, base de dados e serviços de notificação.
+    Firebase/Auth0 credentials
 
-    Para envio de emails, configurar SendGrid ou serviço equivalente.
+    PostgreSQL or Firestore connection strings
 
-    Para armazenamento de imagens, configurar Firebase Storage ou Amazon S3.
+    SendGrid API key (email service)
 
-📄 Licença
+    Firebase Storage or AWS S3 keys (media uploads)
 
-Este projeto está licenciado sob a licença MIT.
+    ⚠️ node_modules are excluded from version control.
+
+💡 Vision
+
+
+Zenit aims to become the default platform for sports coordination in the real world. From casual games to structured competitions, our goal is to make sports more accessible, engaging, and organized through smart technology.
+
+
+
+📬 Contact
+
+
+Got questions or suggestions?
+
+Reach out via zenitsportshelp@gmail.com or open an issue.
+
+📢 Coming Soon
+
+
+    Admin Dashboard for moderation & analytics
+
+    Calendar app integration
+
+    Subscription model for premium features
+
+    Public API for third-party integrations
+
+🧑‍💼 Project Scope
+
+
+Zenit was built to be production-ready, with modular architecture, and a strong focus on scalability, performance, and user engagement. Designed for real-world use by sports communities, local organizers, and competitive players

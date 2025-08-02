@@ -238,7 +238,11 @@
                   <div class="w-20 h-20 bg-gradient-to-br from-primary-500 via-primary-400 to-secondary-500 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl">
                     <div class="w-16 h-16 bg-gray-950/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                       <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M2 12C2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10S2 17.5 2 12zm4.64-.5L12 6.5l5.36 5H15v4c0 .55-.45 1-1 1h-4c-.55 0-1-.45-1-1v-4H6.64z"/>
+                        <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="white"/>
+                        <path d="M12 4C8.5 4 5.5 5.5 3.5 8c2-1.5 5-2 8.5-2s6.5.5 8.5 2c-2-2.5-5-4-8.5-4z" fill="black"/>
+                        <path d="M12 20c3.5 0 6.5-1.5 8.5-4-2 1.5-5 2-8.5 2s-6.5-.5-8.5-2c2 2.5 5 4 8.5 4z" fill="black"/>
+                        <path d="M6 12c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="black" stroke-width="1" fill="none"/>
+                        <path d="M6 12c0 3.3 2.7 6 6 6s6-2.7 6-6" stroke="black" stroke-width="1" fill="none"/>
                       </svg>
                     </div>
                   </div>
@@ -266,8 +270,11 @@
                 <div class="relative z-10 text-center">
                   <div class="w-20 h-20 bg-gradient-to-br from-red-500 via-red-400 to-pink-500 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl">
                     <div class="w-16 h-16 bg-gray-950/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17h2v-2h-2v2zm0-4h2V7h-2v8z"/>
+                      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <circle cx="12" cy="12" r="9"/>
+                        <polyline points="12,7 12,12 15,15"/>
+                        <path d="M9 2h6l1 2-8 0z" fill="currentColor"/>
+                        <path d="M8 20h8l-1 2H9z" fill="currentColor"/>
                       </svg>
                     </div>
                   </div>
@@ -299,6 +306,306 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Sport Headers Section -->
+      <div class="mt-20">
+        <h2 class="text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-400">
+          Cabeçalhos por Modalidade
+        </h2>
+        <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+          Imagens de cabeçalho personalizadas para cada modalidade desportiva
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          
+          <!-- Futebol Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Futebol</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-green-900/30 via-gray-900 to-green-800/30 relative">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                
+                <!-- Football Field Lines -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-full h-full relative">
+                    <!-- Center circle -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-2 border-white/20 rounded-full"></div>
+                    <!-- Center line -->
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-full bg-white/20"></div>
+                    <!-- Penalty areas -->
+                    <div class="absolute left-4 top-1/2 transform -translate-y-1/2 w-16 h-20 border-2 border-white/20"></div>
+                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2 w-16 h-20 border-2 border-white/20"></div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Futebol</h4>
+                  <p class="text-gray-300 text-sm">O desporto rei</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Natação Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Natação</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-blue-900/40 via-gray-900 to-cyan-800/40 relative">
+                <!-- Water Wave Pattern -->
+                <div class="absolute inset-0">
+                  <svg class="w-full h-full opacity-20" viewBox="0 0 1200 400" preserveAspectRatio="none">
+                    <path d="M0,200 Q300,150 600,200 T1200,200 L1200,400 L0,400 Z" fill="url(#waveGradient)"/>
+                    <defs>
+                      <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:rgb(34,211,238);stop-opacity:0.3"/>
+                        <stop offset="100%" style="stop-color:rgb(59,130,246);stop-opacity:0.1"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                
+                <!-- Pool Lanes -->
+                <div class="absolute inset-0 flex items-center">
+                  <div class="w-full h-2/3 relative">
+                    <div class="absolute inset-0 flex flex-col justify-between">
+                      <div class="h-px bg-cyan-400/30"></div>
+                      <div class="h-px bg-cyan-400/20"></div>
+                      <div class="h-px bg-cyan-400/30"></div>
+                      <div class="h-px bg-cyan-400/20"></div>
+                      <div class="h-px bg-cyan-400/30"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Natação</h4>
+                  <p class="text-gray-300 text-sm">Velocidade na água</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Basquetebol Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Basquetebol</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-orange-900/30 via-gray-900 to-red-800/30 relative">
+                <!-- Court Pattern -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(249,115,22,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(249,115,22,0.05)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+                
+                <!-- Basketball Court Lines -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-full h-full relative">
+                    <!-- Center circle -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 border-2 border-orange-400/30 rounded-full"></div>
+                    <!-- Three-point lines -->
+                    <div class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-16 border-2 border-orange-400/20 rounded-t-full border-b-0"></div>
+                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-16 border-2 border-orange-400/20 rounded-t-full border-b-0"></div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Basquetebol</h4>
+                  <p class="text-gray-300 text-sm">Altura e precisão</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ténis Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Ténis</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-green-800/30 via-gray-900 to-green-700/30 relative">
+                <!-- Court Pattern -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                
+                <!-- Tennis Court Lines -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-4/5 h-3/5 border-2 border-white/20 relative">
+                    <!-- Net -->
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-full bg-white/30"></div>
+                    <!-- Service boxes -->
+                    <div class="absolute top-0 left-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute top-0 right-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute bottom-0 left-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute bottom-0 right-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute top-1/4 left-0 w-full h-px bg-white/20"></div>
+                    <div class="absolute bottom-1/4 left-0 w-full h-px bg-white/20"></div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Ténis</h4>
+                  <p class="text-gray-300 text-sm">Técnica e estratégia</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ciclismo Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Ciclismo</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-yellow-900/30 via-gray-900 to-orange-800/30 relative">
+                <!-- Road Pattern -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(245,158,11,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(245,158,11,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+                
+                <!-- Road Lines -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-full h-full relative">
+                    <!-- Center road line -->
+                    <div class="absolute top-1/2 left-0 right-0 h-1 bg-yellow-400/20"></div>
+                    <!-- Dashed center line -->
+                    <div class="absolute top-1/2 left-0 right-0 h-px bg-white/30 transform -translate-y-0.5" style="background-image: repeating-linear-gradient(to right, white 0, white 20px, transparent 20px, transparent 40px);"></div>
+                    <!-- Road edges -->
+                    <div class="absolute top-1/3 left-0 right-0 h-px bg-white/20"></div>
+                    <div class="absolute bottom-1/3 left-0 right-0 h-px bg-white/20"></div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Ciclismo</h4>
+                  <p class="text-gray-300 text-sm">Resistência e velocidade</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Atletismo Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Atletismo</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-red-900/30 via-gray-900 to-orange-800/30 relative">
+                <!-- Track Pattern -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.05)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+                
+                <!-- Running Track -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-full h-full relative">
+                    <!-- Track lanes -->
+                    <div class="absolute inset-0 flex flex-col justify-between py-8">
+                      <div class="h-px bg-red-400/30"></div>
+                      <div class="h-px bg-red-400/20"></div>
+                      <div class="h-px bg-red-400/30"></div>
+                      <div class="h-px bg-red-400/20"></div>
+                      <div class="h-px bg-red-400/30"></div>
+                      <div class="h-px bg-red-400/20"></div>
+                      <div class="h-px bg-red-400/30"></div>
+                    </div>
+                    <!-- Start/finish line -->
+                    <div class="absolute left-1/4 top-0 bottom-0 w-2 bg-white/40"></div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Atletismo</h4>
+                  <p class="text-gray-300 text-sm">Corrida e campo</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Voleibol Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Voleibol</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-blue-900/30 via-gray-900 to-purple-800/30 relative">
+                <!-- Court Pattern -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:36px_36px]"></div>
+                
+                <!-- Volleyball Court -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-4/5 h-4/5 border-2 border-white/20 relative">
+                    <!-- Net -->
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-white/40"></div>
+                    <!-- Attack lines -->
+                    <div class="absolute top-0 left-1/4 w-px h-full bg-white/20"></div>
+                    <div class="absolute top-0 right-1/4 w-px h-full bg-white/20"></div>
+                    <!-- Center line -->
+                    <div class="absolute top-1/2 left-0 w-full h-px bg-white/30"></div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Voleibol</h4>
+                  <p class="text-gray-300 text-sm">Equipa e coordenação</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Padel Header -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-300 text-center">Padel</h3>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-700/40 hover:border-primary-500/40 transition-all duration-500">
+              <div class="aspect-[16/9] bg-gradient-to-br from-teal-900/30 via-gray-900 to-green-800/30 relative">
+                <!-- Court Pattern -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.05)_1px,transparent_1px)] bg-[size:28px_28px]"></div>
+                
+                <!-- Padel Court -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-3/4 h-4/5 border-2 border-white/20 relative">
+                    <!-- Net -->
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-full bg-white/40"></div>
+                    <!-- Service boxes -->
+                    <div class="absolute top-0 left-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute top-0 right-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute bottom-0 left-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute bottom-0 right-1/4 w-px h-1/2 bg-white/20"></div>
+                    <div class="absolute top-1/4 left-0 w-full h-px bg-white/20"></div>
+                    <div class="absolute bottom-1/4 left-0 w-full h-px bg-white/20"></div>
+                    <!-- Glass walls indication -->
+                    <div class="absolute -top-1 -left-1 -right-1 h-1 bg-teal-400/30"></div>
+                    <div class="absolute -bottom-1 -left-1 -right-1 h-1 bg-teal-400/30"></div>
+                    <div class="absolute -top-1 -left-1 -bottom-1 w-1 bg-teal-400/30"></div>
+                    <div class="absolute -top-1 -right-1 -bottom-1 w-1 bg-teal-400/30"></div>
+                  </div>
+                </div>
+                
+                <!-- Title Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 to-transparent p-6">
+                  <h4 class="text-2xl font-bold text-white mb-1">Padel</h4>
+                  <p class="text-gray-300 text-sm">Estratégia e paredes</p>
+                </div>
+                
+                <!-- Hover Effect -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <!-- Extra Info -->
